@@ -58,8 +58,8 @@ const Login = ({user, setUser}) => {
     };
 
     return ( 
-        <div>
-            <h2>Login To Your Account</h2>
+        <div className="container">
+            <h1>Login To Your Account</h1>
             <form id="login-form">
                 <label htmlFor="username">Username</label>
                 <input onChange={handleChange} value={input.username} id="username" name="username" type="text" />

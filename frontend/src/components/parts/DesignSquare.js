@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const DesignSquare = ({design}) => {
     return ( 
         <div className="browse-design">
-            <h3>{design.name}</h3>
-            <h4>Designed by {design.creator.name}</h4>
+            <h2>{design.name}</h2>
+            <p>Designed by {design.creator.name}</p>
             <img src={design.imageUrl} />
             <ul>
                 <li>Length: {design.specs.length}</li>

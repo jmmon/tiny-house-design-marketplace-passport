@@ -5,7 +5,9 @@
 
 .App {
     max-width: 100%;
+    min-height: 100vh;
     margin: 0 auto;
+    background-color: rgb(207, 230, 226);
     display: flex;
 }
 
@@ -25,7 +27,7 @@
 .App-header {
     height: 3rem;
     width: 100%;
-    background-color: #74a5c5;
+    background-color: #7daa43;
     align-items: center;
     padding-left: 2rem;
     display: flex;
@@ -33,6 +35,10 @@
     top: 0;
     justify-content: space-between;
 
+}
+
+a {
+    text-decoration: none;
 }
 
 .App-header ul {
@@ -50,7 +56,7 @@
 /* Sidebar */
 .App-sidebar {
     width: 10rem;
-    background-color: whitesmoke;
+    background-color: rgb(214, 200, 200);
     height: 100%;
     align-content: center;
     padding: 0.5rem;
@@ -74,23 +80,27 @@
 .Content {
     margin-top: 8%;
     /* border: 1px solid purple; */
-    margin-bottom: 8vh;
+    margin-bottom: 3rem;
     display: inline-block;
-    margin-right: 2rem;
+    margin-right: 1rem;
     margin-left: 12rem;
     width: 100%;
+}
+.container {
+    padding: 0 auto;
 }
 
 .container h1 {
     text-align: center;
-    /* margin-bottom: 2rem; */
+    /* margin-bottom: 8rem; */
+    /* align-content: center; */
 }
 
 /* Footer */
 .App-footer {
-    height: 4vh;
+    height: 2rem;
     width: 100%;
-    background-color: #437ba0;
+    background-color: #476324;
     align-items: center;
     padding-left: 2rem;
     display: flex;
@@ -124,23 +134,25 @@ textarea {
 }
 
 .browse-design {
-    width: 40%;
+    width: 43%;
     height: 15rem;
-    padding: 10px 15px;
+    padding: 10px 1%;
     margin: 2%;
     display: inline-block;
     border: 1px black solid;
     border-radius: 10px;
+    min-width: 400px;
+    background-color: whitesmoke;
     
 }
 
-.browse-design h3 {
+.browse-design h2 {
     text-align: center;
 }
 
 
 .browse-design img {
-    width: 70%;
+    width: 66%;
     height: auto;
     display: inline-block;
     top: 0;
@@ -152,6 +164,7 @@ textarea {
     border-radius: 10px;
     list-style-type: none;
     padding: 5px;
+    width: 30%;
 }
 
 .browse-design .btn {
