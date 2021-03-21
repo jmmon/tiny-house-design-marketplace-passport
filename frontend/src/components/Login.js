@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
 
-const Login = ({setUser}) => {
+const Login = ({user, setUser}) => {
     const history = useHistory();
 
     const [input, setInput] = useState({
@@ -34,7 +34,7 @@ const Login = ({setUser}) => {
 
         setIsPending(true);
 
-        fetch('http://localhost:3037/api/login', {
+        fetch('/api/users/login', {
             method: 'POST',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(userCredentials)
@@ -42,9 +42,13 @@ const Login = ({setUser}) => {
         .then(res => res.json())
         .then(data => {
             console.log('data', data);
-            console.log('logged in as', data.user.username);
+            console.log('logged in as', data.user);
             setIsPending(false);
-            setUser(data.user.username);
+            user.username = data.user.username;
+            user.id = data.user._id;
+            console.log('user state', user);
+            setUser({...user, user});
+            //setUser(data.user);
             history.push('/');
         })
         .catch(err => {

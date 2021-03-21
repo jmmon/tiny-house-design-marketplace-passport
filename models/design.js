@@ -15,6 +15,7 @@ const designSchema = new Schema({
         // minlength: [3, 'must be at least 3 characters!'],
         // required: [true, 'must have a value!']
     },
+
     imageUrl: {
         type: String,
         // validate: {
@@ -25,35 +26,62 @@ const designSchema = new Schema({
         // },
         // required: [true, 'must be an image path!']
     },
+
     description: {
         type: String,
         // minlength: [20, 'must be at least 20 characters!'],
         // required: [true, 'must have a value!']
     },
-    length: {
-        type: Number,
-        // required: [true, 'must have a value!']
+
+    specs: {
+        length: {
+            type: String,
+            // required: [true, 'must have a value!']
+        },
+
+        width: {
+            type: String,
+            // required: [true, 'must have a value!']
+        },
+
+        height: {
+            type: String,
+            // required: [true, 'must have a value!']
+        },
+
+        // lofts: {
+        //     type: Number,
+        //     required: [true, 'Enter 0 if no lofts.']
+        // },
+        // //stairs true/false
+        // //bed upstairs true/false
+        // bathrooms: {
+        //     type: Number,
+        //     required: [true, 'Please enter number of bathrooms.']
+        // },
+        // onWheels: {
+        //     type: Boolean,
+        //     default: true
+        // }
     },
-    width: {
-        type: Number,
-        // required: [true, 'must have a value!']
+
+    listingInfo: {
+        cost: {
+            type: String,
+            default: "0",
+        }
     },
-    height: {
-        type: Number,
-        // required: [true, 'must have a value!']
-    },
-    // lofts: {
-    //     type: Number,
-    //     required: [true, 'Enter 0 if no lofts.']
-    // },
-    // //stairs true/false
-    // //bed upstairs true/false
-    // bathrooms: {
-    //     type: Number,
-    //     required: [true, 'Please enter number of bathrooms.']
-    // },
     
-    // creator: { type: Schema.Types.ObjectId, ref: 'User'}
+    creator: {
+        name: {
+            type: String,
+        },
+
+        id: {
+            type: Schema.Types.ObjectId, 
+            ref: 'User'
+        }
+    },
 });
 
 const Design = mongoose.model("Design", designSchema);

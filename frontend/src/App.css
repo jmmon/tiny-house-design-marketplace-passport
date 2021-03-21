@@ -37,13 +37,14 @@
 
 .App-header ul {
     text-align: right;
-    margin-right: 5%;
+    margin-right: 2rem;
 }
 
 .App-header li {
-     font-size: 20px;
+     font-size: 16px;
+     font-weight: bold;
      display: inline-block;
-     margin: 0 2rem;
+     margin: 0 1rem;
 }
 
 /* Sidebar */
@@ -75,13 +76,14 @@
     /* border: 1px solid purple; */
     margin-bottom: 8vh;
     display: inline-block;
-    right: 0;
+    margin-right: 2rem;
     margin-left: 12rem;
     width: 100%;
 }
 
 .container h1 {
     text-align: center;
+    /* margin-bottom: 2rem; */
 }
 
 /* Footer */
@@ -123,23 +125,33 @@ textarea {
 
 .browse-design {
     width: 40%;
-    padding: 2%;
+    height: 15rem;
+    padding: 10px 15px;
     margin: 2%;
     display: inline-block;
-    border: 1px darkgray solid;
+    border: 1px black solid;
+    border-radius: 10px;
+    
 }
 
 .browse-design h3 {
     text-align: center;
 }
+
+
 .browse-design img {
-    width: 60%;
+    width: 70%;
     height: auto;
     display: inline-block;
     top: 0;
 }
+
 .browse-design ul {
     display: inline-block;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    list-style-type: none;
+    padding: 5px;
 }
 
 .browse-design .btn {

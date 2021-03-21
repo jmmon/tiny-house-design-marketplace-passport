@@ -9,10 +9,18 @@ const Create = ({user}) => {
         name: "",
         imageUrl: "",
         description: "",
-        length: "",
-        width: "",
-        height: "",
-        creator: ""
+        specs: {
+            length: "",
+            width: "",
+            height: "",
+        },
+        listingInfo: {
+            cost: ''
+        },
+        creator: {
+            name: '',
+            id: '',
+        }
     });
 
     const [isPending, setIsPending] = useState(false);
@@ -35,9 +43,15 @@ const Create = ({user}) => {
             name: input.name,
             imageUrl: input.imageUrl,
             description: input.description,
-            length: input.length,
-            width: input.width,
-            height: input.height,
+            specs: {
+                length: Number(input.length),
+                width: Number(input.width),
+                height: Number(input.height),
+
+            },
+            listingInfo: {
+                cost: Number(input.cost),
+            },
             //creator: req.user,
         };
 
@@ -45,7 +59,7 @@ const Create = ({user}) => {
 
         setIsPending(true);
 
-        fetch('http://localhost:3037/api/create', {
+        fetch('/api/designs/create', {
             method: 'POST',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(newDesign)
@@ -68,8 +82,8 @@ const Create = ({user}) => {
 
     return ( 
         <div>
-            {!user && <Redirect to="/login"/>}
-            {user && (
+            {!user.username && <Redirect to="/login"/>}
+            {user.username && (
                 <div>
                     <h2>Upload a new design</h2>
                     <form id="create-form">
@@ -90,6 +104,9 @@ const Create = ({user}) => {
 
                         <label htmlFor="height">Height at Tallest Point</label>
                         <input onChange={handleChange} value={input.height} id="height" name="height" type="number" min="0" required />
+
+                        <label htmlFor="cost">Cost</label>
+                        <input onChange={handleChange} value={input.cost} id="cost" name="cost" type="number" min="0" required />
 
                         { }
                         { !isPending &&<button onClick={handleSubmit}>Submit Design</button> }

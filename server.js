@@ -44,14 +44,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
-app.use('/api/register', require('./routes/registerRoute'));
-app.use('/api/login', require('./routes/loginRoute'));
-app.use('/api/details', require('./routes/detailsRoute'));
-app.use('/api/browse', require('./routes/browseRoute'));
-
-//(protected)
-app.use('/api/create', require('./routes/createRoute'));
-app.use('/api/logout', require('./routes/logoutRoute'));
+app.use('/api/users', require('./routes/usersRoute'));
+app.use('/api/designs', require('./routes/designsRoute'));
 
 // passport config
 passport.use(new LocalStrategy(User.authenticate()));

@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
+import useFetch from "./hooks/useFetch";
+import { useParams, useHistory } from "react-router-dom";
+import {useEffect, useState} from "react";
 import DesignSquare from "./parts/DesignSquare";
 
-const Browse = () => {
+const MyDesigns = ({user}) => {
+    console.log(user);
+
     const [designs, setDesigns] = useState([{
         name: '',
         imageUrl: '',
@@ -26,15 +29,11 @@ const Browse = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("/api/designs/browse")
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
-        .then(jsonRes => {
-            console.log('jsonRes', jsonRes);
-            setDesigns(jsonRes);
+        fetch('/api/designs/mydesigns/'+user.id)
+        .then(res => res.json())
+        .then(data => {
+            console.log('data', data);
+            setDesigns(data);
             setIsPending(false);
         })
         .catch(err => {
@@ -48,17 +47,17 @@ const Browse = () => {
         return (
             <DesignSquare design={design}/>
         )
-    })
+    });
+
 
     return ( 
         <div className="container">
-            <h1>Browse Designs</h1>
+            <h1>{`${user.username}'s`} Designs</h1>
             {!isPending && allDesigns}
             {isPending && <div>Loading...</div>}
             {error && <div>{error}</div>}
-            {!isPending && allDesigns.length==0 && <div>No products to show!</div>}
         </div>
      );
 }
  
-export default Browse;
+export default MyDesigns;

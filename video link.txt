@@ -1,1 +1,37 @@
 https://www.youtube.com/watch?v=nUbNn0voiBI
+
+
+.browse-design {
+    width: 40%;
+    height: 15rem;
+    padding: 10px 15px;
+    margin: 2%;
+    display: inline-block;
+    border: 1px black solid;
+    border-radius: 10px;
+    
+}
+
+.browse-design h3 {
+    text-align: center;
+}
+
+
+.browse-design img {
+    width: 70%;
+    height: auto;
+    display: inline-block;
+    top: 0;
+}
+
+.browse-design ul {
+    display: inline-block;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    list-style-type: none;
+    padding: 5px;
+}
+
+.browse-design .btn {
+    align-content: center;
+}

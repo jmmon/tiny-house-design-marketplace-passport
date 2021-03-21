@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useHistory} from "react-router-dom";
 
 
-const Register = ({setUser}) => {
+const Register = ({user, setUser}) => {
     const history = useHistory();
 
     const [input, setInput] = useState({
@@ -37,7 +37,7 @@ const Register = ({setUser}) => {
 
         setIsPending(true);
 
-        fetch('/api/register', {
+        fetch('/api/users/register', {
             method: 'POST',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(newUser)
@@ -46,7 +46,10 @@ const Register = ({setUser}) => {
         .then(data => {
             console.log('new user posted', data.user);
             setIsPending(false);
-            setUser(data.user);
+            //setUser(data.user);
+            user.username = data.user.username;
+            user.id = data.user._id;
+            setUser({...user, user});
             history.push('/');
         })
         .catch(err => {

@@ -1,14 +1,45 @@
-import {useEffect} from "react";
-import {Redirect} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
 
-const Logout = ({setUser}) => {
+const Logout = ({user, setUser}) => {
+    const history = useHistory();
+
+    const [isPending, setIsPending] = useState(true);
+    // const [error, setError] = useState(null);
+
 
     useEffect(() => {
-        setUser(null);
-    })
+        fetch("/api/users/logout")      //works
+        .then(res => {                  
+            if (res.ok) {               //if res = ok then user is logged out
+                console.log('res', res);
+                console.log('Logging out');
+                user.username = null;
+                user.id = null;
+                setUser({...user, user});
+                setIsPending(false);
+                history.push('/');
+                return res.json();
+            } else {
+                console.log('~server res', res)
+            }
+        })
+        // .then(data => {
+            
+        // })
+        .catch(err => {
+            console.log(err);
+            setIsPending(false);
+            // setError('There was an error logging out.');
+        });
+    }, []);
 
     return ( 
-        <Redirect to="/" />
+        <div>
+            {isPending && <div>Logging out...</div>}
+            {/* {error && <div>Error: {error}</div>}
+            {!isPending && !error && <Redirect to="/" />} */}
+        </div>
     )
 }
  

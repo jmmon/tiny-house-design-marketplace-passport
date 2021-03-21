@@ -3,8 +3,8 @@ var router = express.Router();
 const passport = require('passport');
 const User = require('../models/user');
 
-
-router.post('/', function(req, res) {
+// Register User Roue
+router.post('/register', function(req, res) {
     console.log('register post');
     console.log('~req.body', req.body);
 
@@ -71,6 +71,35 @@ router.post('/', function(req, res) {
         res.send(JSON.stringify(displayErrors));
         //res.render('register', {errors: displayErrors});
     }
+});
+
+// Login Route
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { 
+            console.log('username or password error');
+            return res.status(400).json({ errors: ["Username or password incorrect."]});
+        }     //failure
+        
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log('successfully logged in as', user);
+            return res.status(200).json({
+                success: true,
+                user: user,
+            });   //success
+        });
+    })(req, res, next);
+});
+
+// Logout route
+router.get('/logout', function(req, res) {
+    console.log('get logout route');
+    //console.log('~req pre', req)
+    req.logout();
+    res.status(200).json({})
+    //console.log('~req post', req)
 });
 
 module.exports = router;

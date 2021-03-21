@@ -17,9 +17,13 @@ import Details from './components/Details';
 import Create from './components/Create';
 import {useState} from "react";
 import Logout from './components/Logout';
+import MyDesigns from './components/MyDesigns';
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({
+        username: null,
+        id: null
+    });
 
     return (
         <div className="App">
@@ -27,17 +31,15 @@ function App() {
                 <Navbar user={user}/>
                 <Sidebar />
                 <div className="Content">
-                    {user && <h5>{user}</h5>}
-                    {!user && <h5>Not logged in</h5>}
                     <Switch>
                         <Route exact path="/">
                             <Welcome />
                         </Route>
                         <Route path="/login">
-                            <Login setUser={setUser}/>
+                            <Login user={user} setUser={setUser}/>
                         </Route>
                         <Route path="/register">
-                            <Register setUser={setUser}/>
+                            <Register user={user} setUser={setUser}/>
                         </Route>
                         <Route path="/about">
                             <About />
@@ -55,7 +57,10 @@ function App() {
                             <Details />
                         </Route>
                         <Route path="/logout">
-                            <Logout setUser={setUser}/>
+                            <Logout user={user} setUser={setUser}/>
+                         </Route>
+                         <Route path="/myDesigns">
+                             <MyDesigns user={user}/>
                          </Route>
                     </Switch>
                 </div>
