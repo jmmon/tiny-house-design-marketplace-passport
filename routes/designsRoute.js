@@ -94,7 +94,7 @@ router.route("/create").post((req, res) => {
 router.route('/details/:id').get((req, res) => {
     console.log('GET design router working');
 
-    Design.find({_id: req.params.id})
+    Design.findOne({_id: req.params.id})
     .then(design => {
         res.json(design);
         console.log('~design found', design);

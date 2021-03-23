@@ -18,6 +18,7 @@ import Create from './components/Create';
 import {useState} from "react";
 import Logout from './components/Logout';
 import MyDesigns from './components/MyDesigns';
+import Edit from './components/Edit';
 
 function App() {
     const [user, setUser] = useState({
@@ -62,6 +63,9 @@ function App() {
                          <Route path="/myDesigns">
                              <MyDesigns user={user}/>
                          </Route>
+                        <Route path="/edit/:id">
+                            <Edit user={user} />
+                        </Route>
                     </Switch>
                 </div>
                 <Footer />
