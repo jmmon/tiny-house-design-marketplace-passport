@@ -13,6 +13,8 @@ const Edit = ({user}) => {
     const [error, setError] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [input, setInput] = useState({});
+    
+    console.log(user);
 
     useEffect(() => {
         fetch('/api/designs/details/'+id)
@@ -21,32 +23,27 @@ const Edit = ({user}) => {
                 console.log('initial response', res);
                 return res.json();
             } else {
-                let e = Error('Error from fetch', res);
-                setError(e);
-                throw e;
+                throw Error('Error from fetch', res);
             }
         })
         .then(resJson => {
-            console.log('resJson', resJson);
             setDesign(resJson);
-            return;
-        })
-        .then(()=>{
+            console.log('resJson', resJson);
+            console.log('design object',design);
             setInput({
-                name: design.name,
-                imageUrl: design.imageUrl,
-                description: design.description,
-                specs: {
-                    length: design.specs.length,
-                    width: design.specs.width,
-                    height: design.specs.height,
-                },
-                listingInfo: {
-                    cost: design.listingInfo.cost,
-                },
+                name: resJson.name,
+                imageUrl: resJson.imageUrl,
+                description: resJson.description,
+                
+                    length: resJson.specs.length,
+                    width: resJson.specs.width,
+                    height: resJson.specs.height,
+                
+                    cost: resJson.listingInfo.cost,
+                
                 creator: {
-                    name: '',
-                    id: '',
+                    name: user.username,
+                    id: user.id,
                 }
             });
             setIsPending(false);
@@ -55,27 +52,6 @@ const Edit = ({user}) => {
         .catch(e => console.log(e));
     }, [])
 
-    
-
-    
-
-    // const [input, setInput] = useState({
-    //     name: design[0].name,
-    //     imageUrl: design[0].imageUrl,
-    //     description: design[0].description,
-    //     specs: {
-    //         length: Number(design[0].length),
-    //         width: Number(design[0].width),
-    //         height: Number(design[0].height),
-    //     },
-    //     listingInfo: {
-    //         cost: Number(design[0].cost),
-    //     },
-    //     creator: {
-    //         name: '',
-    //         id: '',
-    //     }
-    // });
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -96,13 +72,13 @@ const Edit = ({user}) => {
             imageUrl: input.imageUrl,
             description: input.description,
             specs: {
-                length: Number(input.length),
-                width: Number(input.width),
-                height: Number(input.height),
+                length: input.length,
+                width: input.width,
+                height: input.height,
 
             },
             listingInfo: {
-                cost: Number(input.cost),
+                cost: input.cost,
             },
             //creator: req.user,
         };
@@ -111,14 +87,18 @@ const Edit = ({user}) => {
 
         setIsSubmitting(true);
 
-        fetch('/api/designs/create', {
-            method: 'POST',
+        fetch('/api/designs/edit/'+id, {
+            method: 'PUT',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(newDesign)
         })
         .then(res => {
             if (res.ok) {
                 return res.json();
+            } else {
+                let e = Error('Error from fetch', res);
+                setError(e);
+                throw e;
             }
         })
         .then((jsonRes) => {
@@ -136,6 +116,7 @@ const Edit = ({user}) => {
         <div>
             {!user.username && <Redirect to="/login"/>}
             {user.username && isPending && <div>Loading ...</div>}
+            {/* {(user.username != design.creator.username) && !isPending && <Redirect to={"/details/"+design._id} />} */}
             {error && <div>Error: {error}</div>}
             {user.username && !isPending && (
                 <div>

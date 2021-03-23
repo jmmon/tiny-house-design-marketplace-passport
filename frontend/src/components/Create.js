@@ -9,21 +9,20 @@ const Create = ({user}) => {
         name: "",
         imageUrl: "",
         description: "",
-        specs: {
+        
             length: "",
             width: "",
             height: "",
-        },
-        listingInfo: {
-            cost: ''
-        },
-        creator: {
-            name: '',
-            id: '',
+            
+            cost: '',
+            
+        creator: {      //not really used here
+            name: user.username,
+            id: user.id,
         }
     });
 
-    const [isPending, setIsPending] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -44,20 +43,20 @@ const Create = ({user}) => {
             imageUrl: input.imageUrl,
             description: input.description,
             specs: {
-                length: Number(input.length),
-                width: Number(input.width),
-                height: Number(input.height),
+                length: input.length,
+                width: input.width,
+                height: input.height,
 
             },
             listingInfo: {
-                cost: Number(input.cost),
+                cost: input.cost,
             },
-            //creator: req.user,
+            //creator gets added on server side
         };
 
         console.log('new design (inputs from form)', newDesign);
 
-        setIsPending(true);
+        setIsSubmitting(true);
 
         fetch('/api/designs/create', {
             method: 'POST',
@@ -71,12 +70,12 @@ const Create = ({user}) => {
         })
         .then((jsonRes) => {
             console.log('new design posted', jsonRes);
-            setIsPending(false);
+            setIsSubmitting(false);
             history.push('/details/'+jsonRes._id);
         })
         .catch(err => {
             console.log(err);
-            setIsPending(false);
+            setIsSubmitting(false);
         });
     };
 
@@ -97,20 +96,20 @@ const Create = ({user}) => {
                         <textarea onChange={handleChange} id="description" name="description" required>{input.description}</textarea>
 
                         <label htmlFor="length">Length of Trailer</label>
-                        <input onChange={handleChange} value={input.length} id="length" name="length" type="number" min="0" required />
+                        <input onChange={handleChange} step="0.05" value={input.length} id="length" name="length" type="number" min="0" required />
 
                         <label htmlFor="width">Width at Widest Point</label>
-                        <input onChange={handleChange} value={input.width} id="width" name="width" type="number" min="0" required />
+                        <input onChange={handleChange} step="0.05" value={input.width} id="width" name="width" type="number" min="0" required />
 
                         <label htmlFor="height">Height at Tallest Point</label>
-                        <input onChange={handleChange} value={input.height} id="height" name="height" type="number" min="0" required />
+                        <input onChange={handleChange} step="0.05" value={input.height} id="height" name="height" type="number" min="0" required />
 
                         <label htmlFor="cost">Cost</label>
-                        <input onChange={handleChange} value={input.cost} id="cost" name="cost" type="number" min="0" required />
+                        <input onChange={handleChange} step="0.01" value={input.cost} id="cost" name="cost" type="number" min="0" required />
 
                         { }
-                        { !isPending &&<button onClick={handleSubmit}>Submit Design</button> }
-                        { isPending && <button disabled>Processing...</button> }
+                        { !isSubmitting &&<button onClick={handleSubmit}>Submit Design</button> }
+                        { isSubmitting && <button disabled>Processing...</button> }
                     </form>
                 </div>
             )}
