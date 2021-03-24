@@ -6,7 +6,7 @@ const User = require('../models/user');
 router.route('/browse').get((req, res) => {
     console.log('GET browse router working');
 
-    Design.find()
+    Design.find().populate('creator')
     .then(designs => {
         res.status(200).json(designs);
         console.log('~all designs', designs);
@@ -23,7 +23,7 @@ router.route('/mydesigns/:uid').get((req, res) => {
     console.log('GET mydesigns router working');
     //console.log('~req', req);
 
-    Design.find({'creator.id': userId})
+    Design.find({'creator': userId}).populate('creator')
     .then(designs => {
         res.status(200).json(designs);
         console.log('~user\'s designs', designs);
@@ -45,7 +45,7 @@ router.route("/create").post((req, res) => {
     const length = req.body.specs.length;
     const width = req.body.specs.width;
     const height = req.body.specs.height;
-    const cost = req.body.cost;
+    const cost = req.body.listingInfo.cost;
     console.log('~req.user', req.user);
 
     // const creator = req.body.creator;
@@ -65,10 +65,7 @@ router.route("/create").post((req, res) => {
             cost: cost
         },
 
-        creator: {
-            name: req.user.username,
-            id: req.user._id
-        }
+        creator: req.user._id,
     });
 
     newDesign.save()
@@ -83,7 +80,47 @@ router.route("/create").post((req, res) => {
         .catch(err => {
             console.log(err);
             res.sendStatus(500);
-        })
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
+
+router.route("/edit/:id").put((req, res) => {
+    console.log('create router working');
+    console.log('~req.body', req.body);
+
+    const name = req.body.name;
+    const imageUrl = req.body.imageUrl;
+    const description = req.body.description;
+    const length = req.body.specs.length;
+    const width = req.body.specs.width;
+    const height = req.body.specs.height;
+    const cost = req.body.listingInfo.cost;
+    console.log('~req.user', req.user);
+
+    const updatedDesign = {
+        name: name,
+        imageUrl: imageUrl,
+        description: description,
+        specs: {
+            length: length,
+            width: width,
+            height: height,
+
+        },
+        listingInfo: {
+            cost: cost
+        },
+    };
+
+    Design.findOneAndUpdate({_id: req.params.id}, updatedDesign)
+    .then((design) => {
+        console.log('updated design', design);
+        res.status(200).json(design);
     })
     .catch(err => {
         console.log(err);
@@ -94,7 +131,7 @@ router.route("/create").post((req, res) => {
 router.route('/details/:id').get((req, res) => {
     console.log('GET design router working');
 
-    Design.find({_id: req.params.id})
+    Design.findOne({_id: req.params.id}).populate('creator')
     .then(design => {
         res.json(design);
         console.log('~design found', design);
@@ -103,22 +140,28 @@ router.route('/details/:id').get((req, res) => {
         res.send(500);
         console.log(err);
     });
-
 });
 
 router.route('/details/:id').delete((req, res) => {
     console.log('DELETE design router working');
 
-    Design.findOneAndDelete({_id: req.params.id})
+    Design.findOneAndDelete({_id: req.params.id}).populate('creator')
     .then(design => {
-        res.status(200).json(design);
-        console.log('~design deleted', design);
+        User.findOneAndUpdate({_id: design.creator._id}, {$pull: {'designs': design._id}})
+        .then(user => {
+            res.status(200).json(design);
+            console.log('~design deleted', design);
+            console.log('~user updated', user);
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(500).json({})
+        })
     })
     .catch(err => {
         res.status(500).json({});
         console.log(err);
     });
-
 });
 
 module.exports = router;

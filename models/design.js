@@ -73,14 +73,8 @@ const designSchema = new Schema({
     },
     
     creator: {
-        name: {
-            type: String,
-        },
-
-        id: {
-            type: Schema.Types.ObjectId, 
-            ref: 'User'
-        }
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
     },
 });
 

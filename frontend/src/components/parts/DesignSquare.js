@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const DesignSquare = ({design}) => {
     return ( 
-        <div className="browse-design">
+        <Link className="browse-design" to={`/details/${design._id}`}>
             <h2>{design.name}</h2>
             <p>Designed by {design.creator.name}</p>
             <img src={design.imageUrl} />
@@ -13,8 +13,8 @@ const DesignSquare = ({design}) => {
             </ul>
             <p>{design.listingInfo.cost}</p>
             <p>{design.description}</p>
-            <Link className="btn" to={`/details/${design._id}`}>Details</Link>
-        </div>
+        </Link>
+        
      );
 }
  

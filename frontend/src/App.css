@@ -170,3 +170,7 @@ textarea {
 .browse-design .btn {
     align-content: center;
 }
+
+.browse-design:hover{
+    background-color: white;
+}
