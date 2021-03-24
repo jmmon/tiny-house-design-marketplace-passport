@@ -9,3 +9,6 @@ From Ron Cagle | KU to Everyone:  08:25 PM
 From Ron Cagle | KU to Everyone:  08:36 PM
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "React-Cube/build")));
+
+
+https://github.com/AlexSegen/react-shopping-cart/blob/master/src/pages/store/ProductsGrid.js

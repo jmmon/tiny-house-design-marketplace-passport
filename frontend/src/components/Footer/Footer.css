@@ -1,0 +1,12 @@
+/* Footer */
+.App-footer {
+    height: 2rem;
+    width: 100%;
+    background-color: #476324;
+    align-items: center;
+    padding-left: 2rem;
+    display: flex;
+    color: #e7e7e7;
+    bottom: 0;
+    position: fixed;
+}

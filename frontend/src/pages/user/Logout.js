@@ -36,7 +36,7 @@ const Logout = ({user, setUser}) => {
 
     return ( 
         <div>
-            {isPending && <div>Logging out...</div>}
+            {isPending && <div className="loading">Logging out...</div>}
             {/* {error && <div>Error: {error}</div>}
             {!isPending && !error && <Redirect to="/" />} */}
         </div>

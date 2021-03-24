@@ -60,18 +60,22 @@ const Register = ({user, setUser}) => {
 
     return ( 
         <div>
-            <h2>Register a user</h2>
-            <form id="register-form">
-                <label htmlFor="username">Username</label>
-                <input onChange={handleChange} value={input.username} id="username" name="username" type="text" required minLength="5" />
-                <label htmlFor="password">Password</label>
-                <input onChange={handleChange} value={input.password} id="password" name="password" type="password" required minLength="5" />
-                <label htmlFor="repeatPassword">Repeat Password</label>
-                <input onChange={handleChange} value={input.repeatPassword} id="repeatPassword" name="repeatPassword" type="password" required minLength="5" />
-                { }
-                { !isPending &&<button onClick={handleSubmit}>Register</button> }
-                { isPending && <button disabled>Processing...</button> }
-            </form>
+            <h1 className="title">Register a user</h1>
+            <div className="body">
+                <div className="register-form">
+                    <form id="register-form">
+                        <label htmlFor="username">Username</label>
+                        <input onChange={handleChange} value={input.username} id="username" name="username" type="text" required minLength="5" />
+                        <label htmlFor="password">Password</label>
+                        <input onChange={handleChange} value={input.password} id="password" name="password" type="password" required minLength="5" />
+                        <label htmlFor="repeatPassword">Repeat Password</label>
+                        <input onChange={handleChange} value={input.repeatPassword} id="repeatPassword" name="repeatPassword" type="password" required minLength="5" />
+                        { }
+                        { !isPending &&<button onClick={handleSubmit}>Register</button> }
+                        { isPending && <button disabled>Processing...</button> }
+                    </form>
+                </div>
+            </div>
         </div>
      );
 }

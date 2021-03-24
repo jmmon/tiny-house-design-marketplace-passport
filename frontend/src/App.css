@@ -11,103 +11,52 @@
     display: flex;
 }
 
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
-/* Header */
-.App-header {
-    height: 3rem;
-    width: 100%;
-    background-color: #7daa43;
-    align-items: center;
-    padding-left: 2rem;
-    display: flex;
-    position: fixed;
-    top: 0;
-    justify-content: space-between;
-
+/* Content - (.App-sidebar + .container) */
+.App-Content {
+    margin: 3rem 0 2rem 11rem;  
+    /* display: inline-block; */
+    width: 100vw;
 }
 
-a {
-    text-decoration: none;
-}
-
-.App-header ul {
-    text-align: right;
-    margin-right: 2rem;
-}
-
-.App-header li {
-     font-size: 16px;
-     font-weight: bold;
-     display: inline-block;
-     margin: 0 1rem;
-}
-
-/* Sidebar */
-.App-sidebar {
-    width: 10rem;
-    background-color: rgb(214, 200, 200);
-    height: 100%;
-    align-content: center;
+.App-Content h1 {
+    text-align: center;
     padding: 0.5rem;
-    border-right: 1px solid black;
-    position: fixed;
-    display: inline-block;
-    margin-top: 3rem;
-    left: 0;
-    margin-bottom: 2.5rem;
 }
 
-.App-sidebar h3 {
-    text-align: center;
-}
-
-.App-sidebar input {
-    width: 9rem;
-}
-
-/* Content */
-.Content {
-    margin-top: 8%;
-    /* border: 1px solid purple; */
-    margin-bottom: 3rem;
-    display: inline-block;
-    margin-right: 1rem;
-    margin-left: 12rem;
-    width: 100%;
-}
-.container {
-    padding: 0 auto;
-}
-
-.container h1 {
-    text-align: center;
-    /* margin-bottom: 8rem; */
-    /* align-content: center; */
-}
-
-/* Footer */
-.App-footer {
-    height: 2rem;
-    width: 100%;
-    background-color: #476324;
-    align-items: center;
-    padding-left: 2rem;
+/* Body */
+.body {
+    margin: 0 1rem;
     display: flex;
-    color: #e7e7e7;
-    bottom: 0;
-    position: fixed;
+    justify-content: center;
+    width: auto;
+
 }
+
+.browse {
+    display: inline-block;
+    justify-content: center;
+    margin: 0;
+    width: auto;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+}
+
+#login-form {
+    width: 50vw;
+}
+
+.register-form {
+    display: flex;
+    justify-content: center;
+}
+
+#register-form {
+    width: 50vw;
+}
+
 
 /* Form */
 form label {
@@ -128,49 +77,7 @@ textarea {
     display: block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    padding: 12px 20px 12px 12px;
+    padding: 12px 12px 12px 12px;
     border-radius: 0 4px 4px 4px;
     margin: 8px 0 2em;
-}
-
-.browse-design {
-    width: 43%;
-    height: 15rem;
-    padding: 10px 1%;
-    margin: 2%;
-    display: inline-block;
-    border: 1px black solid;
-    border-radius: 10px;
-    min-width: 400px;
-    background-color: whitesmoke;
-    
-}
-
-.browse-design h2 {
-    text-align: center;
-}
-
-
-.browse-design img {
-    width: 66%;
-    height: auto;
-    display: inline-block;
-    top: 0;
-}
-
-.browse-design ul {
-    display: inline-block;
-    border: 1px solid darkgray;
-    border-radius: 10px;
-    list-style-type: none;
-    padding: 5px;
-    width: 30%;
-}
-
-.browse-design .btn {
-    align-content: center;
-}
-
-.browse-design:hover{
-    background-color: white;
 }

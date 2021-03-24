@@ -1,7 +1,7 @@
-import useFetch from "./hooks/useFetch";
-import { useParams, useHistory } from "react-router-dom";
+// import useFetch from "../../hooks/useFetch";
+// import { useParams, useHistory } from "react-router-dom";
 import {useEffect, useState} from "react";
-import DesignSquare from "./parts/DesignSquare";
+import DesignSquare from "../../components/DesignSquare/DesignSquare";
 
 const MyDesigns = ({user}) => {
     console.log(user);
@@ -51,11 +51,15 @@ const MyDesigns = ({user}) => {
 
 
     return ( 
-        <div className="container">
-            <h1>{`${user.username}'s`} Designs</h1>
-            {!isPending && allDesigns}
-            {isPending && <div>Loading...</div>}
-            {error && <div>{error}</div>}
+        <div>
+            <h1 className="title">{`${user.username}'s`} Designs</h1>
+            <div className="body">
+                <div className="browse">
+                    {!isPending && allDesigns}
+                    {isPending && <div className="loading">Loading...</div>}
+                    {error && <div>{error}</div>}
+                </div> 
+            </div>
         </div>
      );
 }
