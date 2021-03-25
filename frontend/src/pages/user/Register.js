@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 
 
 const Register = ({user, setUser}) => {
@@ -70,9 +70,16 @@ const Register = ({user, setUser}) => {
                         <input onChange={handleChange} value={input.password} id="password" name="password" type="password" required minLength="5" />
                         <label htmlFor="repeatPassword">Repeat Password</label>
                         <input onChange={handleChange} value={input.repeatPassword} id="repeatPassword" name="repeatPassword" type="password" required minLength="5" />
-                        { }
-                        { !isPending &&<button onClick={handleSubmit}>Register</button> }
-                        { isPending && <button disabled>Processing...</button> }
+                        <div className="buttons">
+                            { !isPending &&<button onClick={handleSubmit}>Register</button> }
+                            { isPending && <button disabled>Processing...</button> }
+                        </div>
+                        <div className="login-text">Already have an account?</div>
+                        <div className="buttons">
+                            
+                            <Link to="/login">Login</Link>
+                        </div>
+
                     </form>
                 </div>
             </div>

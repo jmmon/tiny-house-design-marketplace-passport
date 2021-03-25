@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 
 const Login = ({user, setUser}) => {
     const history = useHistory();
@@ -71,9 +71,14 @@ const Login = ({user, setUser}) => {
                             <label htmlFor="password">Password</label>
                             <input onChange={handleChange} value={input.password} id="password" name="password" type="password" />
                         </div>
-                        
-                        { !isPending &&<button onClick={handleSubmit}>Login</button> }
-                        { isPending && <button disabled>Processing...</button> }
+                        <div className="buttons">
+                            { !isPending &&<button onClick={handleSubmit}>Login</button> }
+                            { isPending && <button disabled>Processing...</button> }
+                        </div>
+                        <div className="login-text">Need to register?</div>
+                        <div className="buttons">
+                            <Link to="/register">Register</Link>
+                        </div>
                     </form>
                 </div>
             </div>
