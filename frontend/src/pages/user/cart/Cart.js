@@ -5,6 +5,7 @@ import CartProducts from './CartProducts';
 import { CartContext } from '../../../contexts/CartContext';
 import { formatNumber } from '../../../helpers/utils';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Cart = () => {
 

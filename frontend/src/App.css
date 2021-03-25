@@ -34,28 +34,38 @@
 
 .browse {
     display: inline-block;
-    justify-content: center;
+
     margin: 0;
-    width: auto;
+    width: 100%;
+    padding: 0 auto;
 }
 
-.login-form {
+.login-form, .register-form {
     display: flex;
     justify-content: center;
 }
 
-#login-form {
+#login-form, #register-form {
     width: 50vw;
 }
 
-.register-form {
-    display: flex;
-    justify-content: center;
+#login-form button, #register-form button {
+    align-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid blue;
+    background-color: lightblue;
+    margin: 5px;
+    width: 6rem;
+    color: black;
+    height: 2rem;
 }
 
-#register-form {
-    width: 50vw;
+#login-form button:hover, #register-form button:hover {
+    background-color: white;
+    color: black;
 }
+
 
 
 /* Form */
@@ -82,7 +92,7 @@ textarea {
     margin: 8px 0 2em;
 }
 
-.design-details img{
+/* .design-details img{
     width: 20%;
 }
 
@@ -90,4 +100,28 @@ textarea {
     border: 1px solid black;
     display: inline-block;
     justify-content: center;
+} */
+
+.create-form, .edit-form {
+    width: 50vw;
 }
+
+
+
+.create-form button, .edit-form button {
+    align-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid blue;
+    background-color: lightblue;
+    margin: 5px;
+    width: 6rem;
+    color: black;
+    height: 2rem;
+}
+
+.create-form button:hover, .edit-form button:hover {
+    background-color: white;
+    color: black;
+}
+
