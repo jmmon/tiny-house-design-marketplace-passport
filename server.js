@@ -52,7 +52,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-app.listen(3037, function() {
-    console.log('express running on 3037');
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port=8000;
+}
+app.listen(port, function() {
+    console.log('express running on', port);
 });

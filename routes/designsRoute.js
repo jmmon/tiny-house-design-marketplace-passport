@@ -155,7 +155,7 @@ router.route('/details/:id').delete((req, res) => {
         })
         .catch(e => {
             console.log(e);
-            res.status(500).json({})
+            res.status(500).json({});
         })
     })
     .catch(err => {

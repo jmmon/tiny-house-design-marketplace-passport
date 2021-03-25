@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
-import DesignSquare from "./parts/DesignSquare";
+import DesignSquare from "../../components/DesignSquare/DesignSquare";
 
 const Browse = () => {
+
     const [designs, setDesigns] = useState([{
         name: '',
         imageUrl: '',
@@ -44,19 +44,26 @@ const Browse = () => {
     }, []);
 
     const allDesigns = designs.map(design => {
-        console.log('inside map', design);
+        // console.log('inside map', design);
         return (
-            <DesignSquare design={design}/>
+            <DesignSquare key={design._id} design={design}/>
         )
     })
 
     return ( 
-        <div className="container">
-            <h1>Browse Designs</h1>
-            {!isPending && allDesigns}
-            {isPending && <div>Loading...</div>}
-            {error && <div>{error}</div>}
-            {!isPending && allDesigns.length==0 && <div>No products to show!</div>}
+        <div>
+            <h1 className="title">Browse Designs</h1>
+            <div className="body">
+                <div className="browse">
+                    {!isPending && allDesigns}
+                    {isPending && <div>Loading...</div>}
+                    {error && <div>{error}</div>}
+                    {!isPending && allDesigns.length===0 && <div>No products to show!</div>}
+                    {/* {allProducts}
+                    {allProducts.length===0 && <div>No products to show!</div>} */}
+                    
+                </div>
+            </div>
         </div>
      );
 }

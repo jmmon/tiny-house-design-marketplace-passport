@@ -84,33 +84,37 @@ const Create = ({user}) => {
             {!user.username && <Redirect to="/login"/>}
             {user.username && (
                 <div>
-                    <h2>Upload a new design</h2>
-                    <form id="create-form">
-                        <label htmlFor="name">Name</label>
-                        <input onChange={handleChange} value={input.name} id="name" name="name" type="text" required minLength="5" />
+                    <h1 className="title">Upload a new design</h1>
+                    <div className="body">
+                        <div className="create-form">
+                            <form id="create-form">
+                                <label htmlFor="name">Name</label>
+                                <input onChange={handleChange} value={input.name} id="name" name="name" type="text" required minLength="5" />
 
-                        <label htmlFor="imageUrl">ImageUrl of Design</label>
-                        <input onChange={handleChange} value={input.imageUrl} id="imageUrl" name="imageUrl" type="text" required />
+                                <label htmlFor="imageUrl">ImageUrl of Design</label>
+                                <input onChange={handleChange} value={input.imageUrl} id="imageUrl" name="imageUrl" type="text" required />
 
-                        <label htmlFor="description">Description</label>
-                        <textarea onChange={handleChange} id="description" name="description" required>{input.description}</textarea>
+                                <label htmlFor="description">Description</label>
+                                <textarea onChange={handleChange} id="description" name="description" required>{input.description}</textarea>
 
-                        <label htmlFor="length">Length of Trailer</label>
-                        <input onChange={handleChange} step="0.05" value={input.length} id="length" name="length" type="number" min="0" required />
+                                <label htmlFor="length">Length of Trailer</label>
+                                <input onChange={handleChange} step="0.05" value={input.length} id="length" name="length" type="number" min="0" required />
 
-                        <label htmlFor="width">Width at Widest Point</label>
-                        <input onChange={handleChange} step="0.05" value={input.width} id="width" name="width" type="number" min="0" required />
+                                <label htmlFor="width">Width at Widest Point</label>
+                                <input onChange={handleChange} step="0.05" value={input.width} id="width" name="width" type="number" min="0" required />
 
-                        <label htmlFor="height">Height at Tallest Point</label>
-                        <input onChange={handleChange} step="0.05" value={input.height} id="height" name="height" type="number" min="0" required />
+                                <label htmlFor="height">Height at Tallest Point</label>
+                                <input onChange={handleChange} step="0.05" value={input.height} id="height" name="height" type="number" min="0" required />
 
-                        <label htmlFor="cost">Cost</label>
-                        <input onChange={handleChange} step="0.01" value={input.cost} id="cost" name="cost" type="number" min="0" required />
+                                <label htmlFor="cost">Cost</label>
+                                <input onChange={handleChange} step="0.01" value={input.cost} id="cost" name="cost" type="number" min="0" required />
 
-                        { }
-                        { !isSubmitting &&<button onClick={handleSubmit}>Submit Design</button> }
-                        { isSubmitting && <button disabled>Processing...</button> }
-                    </form>
+                                { }
+                                { !isSubmitting &&<button onClick={handleSubmit}>Submit Design</button> }
+                                { isSubmitting && <button disabled>Processing...</button> }
+                            </form>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

@@ -58,16 +58,25 @@ const Login = ({user, setUser}) => {
     };
 
     return ( 
-        <div className="container">
-            <h1>Login To Your Account</h1>
-            <form id="login-form">
-                <label htmlFor="username">Username</label>
-                <input onChange={handleChange} value={input.username} id="username" name="username" type="text" />
-                <label htmlFor="password">Password</label>
-                <input onChange={handleChange} value={input.password} id="password" name="password" type="password" />
-                { !isPending &&<button onClick={handleSubmit}>Login</button> }
-                { isPending && <button disabled>Processing...</button> }
-            </form>
+        <div>
+            <h1 className="title">Login To Your Account</h1>
+            <div className="body">
+                <div className="login-form">
+                    <form id="login-form">
+                        <div>
+                            <label htmlFor="username">Username</label>
+                            <input onChange={handleChange} value={input.username} id="username" name="username" type="text" />
+                        </div>
+                        <div>
+                            <label htmlFor="password">Password</label>
+                            <input onChange={handleChange} value={input.password} id="password" name="password" type="password" />
+                        </div>
+                        
+                        { !isPending &&<button onClick={handleSubmit}>Login</button> }
+                        { isPending && <button disabled>Processing...</button> }
+                    </form>
+                </div>
+            </div>
         </div>
      );
 }

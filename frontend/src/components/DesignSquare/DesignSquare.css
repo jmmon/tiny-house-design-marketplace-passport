@@ -1,0 +1,42 @@
+.browse-design {
+    width: 43%;
+    height: 15rem;
+    padding: 10px 1%;
+    margin: 2%;
+    display: inline-block;
+    border: 1px black solid;
+    border-radius: 10px;
+    min-width: 400px;
+    background-color: whitesmoke;
+    
+}
+
+.browse-design h2 {
+    text-align: center;
+}
+
+
+.browse-design img {
+    width: auto;
+    /* height: auto; */
+    max-height: 30%;
+    display: inline-block;
+    top: 0;
+}
+
+.browse-design ul {
+    display: inline-block;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    list-style-type: none;
+    padding: 5px;
+    width: 30%;
+}
+
+.browse-design .btn {
+    align-content: center;
+}
+
+.browse-design:hover{
+    background-color: white;
+}
