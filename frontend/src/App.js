@@ -21,6 +21,9 @@ import MyDesigns from './pages/designs/MyDesigns';
 import Edit from './pages/designs/Edit';
 import Cart from './pages/user/cart/Cart';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function App() {
     const [user, setUser] = useState({
@@ -31,49 +34,64 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Navbar user={user}/>
-                <Sidebar user={user} />
-                <div className="App-Content">
-                    <Switch>
-                        <Route path="/login">
-                            <Login user={user} setUser={setUser}/>
-                        </Route>
-                        <Route path="/register">
-                            <Register user={user} setUser={setUser}/>
-                        </Route>
-                        <Route path="/logout">
-                            <Logout user={user} setUser={setUser}/>
-                         </Route>
-                        <Route path="/about">
-                            <About user={user} />
-                        </Route>
-                        <Route path="/contact">
-                            <Contact user={user} />
-                        </Route>
-                        <Route path="/browse">
-                            <Browse user={user} />
-                        </Route>
-                        <Route path="/create">
-                            <Create user={user}/>
-                        </Route>
-                        <Route path="/details/:id">
-                            <Details user={user} />
-                        </Route>
-                         <Route path="/myDesigns">
-                             <MyDesigns user={user}/>
-                         </Route>
-                        <Route path="/edit/:id">
-                            <Edit user={user} />
-                        </Route>
-                        <Route path="/cart">
-                            <Cart user={user}/>
-                        </Route>
-                        <Route exact path="/">
-                            <Welcome user={user} />
-                        </Route>
-                    </Switch>
-                </div>
-                <Footer />
+                <Container>
+                    <Row>
+                        <Navbar user={user}/>
+                    </Row>
+
+                    <Row>
+                        <Col>
+                            <Sidebar className="active" user={user} />
+                        </Col>
+
+                        <Col>
+                                <div className="App-Content">
+                                <Switch>
+                                    <Route path="/login">
+                                        <Login user={user} setUser={setUser}/>
+                                    </Route>
+                                    <Route path="/register">
+                                        <Register user={user} setUser={setUser}/>
+                                    </Route>
+                                    <Route path="/logout">
+                                        <Logout user={user} setUser={setUser}/>
+                                    </Route>
+                                    <Route path="/about">
+                                        <About user={user} />
+                                    </Route>
+                                    <Route path="/contact">
+                                        <Contact user={user} />
+                                    </Route>
+                                    <Route path="/browse">
+                                        <Browse user={user} />
+                                    </Route>
+                                    <Route path="/create">
+                                        <Create user={user}/>
+                                    </Route>
+                                    <Route path="/details/:id">
+                                        <Details user={user} />
+                                    </Route>
+                                    <Route path="/myDesigns">
+                                        <MyDesigns user={user}/>
+                                    </Route>
+                                    <Route path="/edit/:id">
+                                        <Edit user={user} />
+                                    </Route>
+                                    <Route path="/cart">
+                                        <Cart user={user}/>
+                                    </Route>
+                                    <Route exact path="/">
+                                        <Welcome user={user} />
+                                    </Route>
+                                </Switch>
+                            </div>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Footer />
+                    </Row>
+                </Container>
             </Router>
         </div>
     );
