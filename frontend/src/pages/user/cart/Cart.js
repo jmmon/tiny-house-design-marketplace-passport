@@ -13,6 +13,7 @@ const Cart = () => {
     return ( 
         // <Layout title="Cart" description="This is the Cart page" >
             <div >
+                
                 <div className="text-center mt-5">
                     <h1>Cart</h1>
                     <p>This is the Cart Page.</p>
@@ -31,7 +32,7 @@ const Cart = () => {
                         { checkout && 
                             <div className="p-3 text-center text-success">
                                 <p>Checkout successfull</p>
-                                <Link to="/" className="btn btn-outline-success btn-sm">BUY MORE</Link>
+                                <Link to="/browse" className="btn btn-outline-success btn-sm">BUY MORE</Link>
                             </div>
                         }
                     </div>

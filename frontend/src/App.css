@@ -81,3 +81,13 @@ textarea {
     border-radius: 0 4px 4px 4px;
     margin: 8px 0 2em;
 }
+
+.design-details img{
+    width: 20%;
+}
+
+.design-details {
+    border: 1px solid black;
+    display: inline-block;
+    justify-content: center;
+}

@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import {useState} from "react";
 
 
-const Details = () => {
+const Details = ({user}) => {
     const { id } = useParams();
 
     const { data: design, isPending, error } = useFetch('/api/designs/details/'+id);
@@ -12,7 +12,11 @@ const Details = () => {
     if (error) console.log('error', error);
 
     const [deleteConf, setDeleteConf] = useState(false);
-    const [isCreator, setIsCreator] = useState(true);
+    if (!isPending) {
+        console.log('design creator',design.creator.username);
+        console.log('user name',user.username);
+
+    }
 
     const confirmDelete = () => {
         setDeleteConf(true);
@@ -47,16 +51,34 @@ const Details = () => {
                         <article className="design-details">
                             <h3>{design.name}</h3>
                             <h4>Designed by {design.creator.username}</h4>
-                            <p>{design.imageUrl}</p>
+                            <img src={design.imageUrl} />
                             <p>{design.description}</p>
                             <p>{design.specs.length}</p>
                             <p>{design.specs.width}</p>
                             <p>{design.specs.height}</p>
                             <p>{design.listingInfo.cost}</p>
 
-                            {isCreator && !deleteConf && <button className="btn" onClick={confirmDelete}>Delete</button>}
-                            {isCreator && deleteConf && <button className="btn" onClick={handleDelete}>Really Delete?</button>}
-                            {isCreator && <Link to={`/edit/${id}`}><button className="btn">Edit</button></Link>}
+                            {
+                                (design.creator.username === user.username) && !deleteConf && <button 
+                                    className="btn" 
+                                    onClick={confirmDelete}
+                                >Remove Product From Shelf</button>
+                            }
+                            {
+                                (design.creator.username === user.username) && deleteConf && 
+                                <button 
+                                    className="btn" 
+                                    onClick={handleDelete}
+                                >Permanently Delete Product Info?</button>
+                            }
+                            {
+                                (design.creator.username === user.username) && 
+                                <Link to={`/edit/${id}`}>
+                                    <button 
+                                        className="btn"
+                                    >Edit Product</button>
+                                </Link>
+                            }
                         </article>
                     </div>
                 </div>

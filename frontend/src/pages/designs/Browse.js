@@ -1,17 +1,7 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import DesignSquare from "../../components/DesignSquare/DesignSquare";
-// import {ProductsContext} from "../../contexts/ProductsContext";
 
 const Browse = () => {
-
-    // const {products} = useContext(ProductsContext);
-
-    // const allProducts = products.map(product => {
-    //     console.log('inside map', product);
-    //     return (
-    //         <DesignSquare key={product._id} design={product}/>
-    //     )
-    // })
 
     const [designs, setDesigns] = useState([{
         name: '',
@@ -54,7 +44,7 @@ const Browse = () => {
     }, []);
 
     const allDesigns = designs.map(design => {
-        console.log('inside map', design);
+        // console.log('inside map', design);
         return (
             <DesignSquare key={design._id} design={design}/>
         )

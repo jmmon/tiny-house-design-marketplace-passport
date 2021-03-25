@@ -1,5 +1,5 @@
-import useFetch from "../../hooks/useFetch";
-import { useParams, useHistory, Link, Redirect } from "react-router-dom";
+// import useFetch from "../../hooks/useFetch";
+import { useParams, useHistory, Link } from "react-router-dom";
 import {useState, useEffect} from "react";
 
 
@@ -49,14 +49,14 @@ const Edit = ({user}) => {
                     }
                 });
                 setIsPending(false);
-                if (user.username != resJson.creator.username){
+                if (user.username !== resJson.creator.username){
                     history.push("/details/"+design._id);
                 }
                 console.log('fetched design', design);
             })
             .catch(e => console.log(e));
         }
-    }, [])
+    }, []);
 
 
     const handleChange = (event) => {
@@ -127,33 +127,35 @@ const Edit = ({user}) => {
                 <div>
                     <h1 className="title">Edit Design</h1>
                     <div className="body">
-                        <form id="create-form">
-                            <label htmlFor="name">Name</label>
-                            <input onChange={handleChange} value={input.name} id="name" name="name" type="text" required minLength="5" />
+                        <div className="edit-form">
+                            <form id="create-form">
+                                <label htmlFor="name">Name</label>
+                                <input onChange={handleChange} value={input.name} id="name" name="name" type="text" required minLength="5" />
 
-                            <label htmlFor="imageUrl">ImageUrl of Design</label>
-                            <input onChange={handleChange} value={input.imageUrl} id="imageUrl" name="imageUrl" type="text" required />
+                                <label htmlFor="imageUrl">ImageUrl of Design</label>
+                                <input onChange={handleChange} value={input.imageUrl} id="imageUrl" name="imageUrl" type="text" required />
 
-                            <label htmlFor="description">Description</label>
-                            <textarea onChange={handleChange} id="description" name="description" required>{input.description}</textarea>
+                                <label htmlFor="description">Description</label>
+                                <textarea onChange={handleChange} id="description" name="description" required>{input.description}</textarea>
 
-                            <label htmlFor="length">Length of Trailer</label>
-                            <input onChange={handleChange} value={input.length} id="length" name="length" type="number" min="0" required />
+                                <label htmlFor="length">Length of Trailer</label>
+                                <input onChange={handleChange} value={input.length} id="length" name="length" type="number" min="0" required />
 
-                            <label htmlFor="width">Width at Widest Point</label>
-                            <input onChange={handleChange} value={input.width} id="width" name="width" type="number" min="0" required />
+                                <label htmlFor="width">Width at Widest Point</label>
+                                <input onChange={handleChange} value={input.width} id="width" name="width" type="number" min="0" required />
 
-                            <label htmlFor="height">Height at Tallest Point</label>
-                            <input onChange={handleChange} value={input.height} id="height" name="height" type="number" min="0" required />
+                                <label htmlFor="height">Height at Tallest Point</label>
+                                <input onChange={handleChange} value={input.height} id="height" name="height" type="number" min="0" required />
 
-                            <label htmlFor="cost">Cost</label>
-                            <input onChange={handleChange} value={input.cost} id="cost" name="cost" type="number" min="0" required />
+                                <label htmlFor="cost">Cost</label>
+                                <input onChange={handleChange} value={input.cost} id="cost" name="cost" type="number" min="0" required />
 
-                            
-                            { !isSubmitting && <button onClick={handleSubmit}>Save Edit</button> }
-                            { isSubmitting && <button disabled>Processing...</button> }
-                            <Link to={"/details/"+design._id}><button>Cancel</button></Link>
-                        </form>
+                                
+                                { !isSubmitting && <button onClick={handleSubmit}>Save Edit</button> }
+                                { isSubmitting && <button disabled>Processing...</button> }
+                                <Link to={"/details/"+design._id}><button>Cancel</button></Link>
+                            </form>
+                        </div>
                     </div>
                 </div>
             )}

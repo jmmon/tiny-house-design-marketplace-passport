@@ -60,7 +60,7 @@ const Register = ({user, setUser}) => {
 
     return ( 
         <div>
-            <h1 className="title">Register a user</h1>
+            <h1 className="title">Register</h1>
             <div className="body">
                 <div className="register-form">
                     <form id="register-form">

@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({user}) => {
-    console.log('navbar user console.log', user);
+    //console.log('navbar user console.log', user);
     return ( 
         <nav className="App-navbar">
             <Link to="/">

@@ -9,16 +9,16 @@ const DesignSquare = ({design}) => {
     const {addProduct, cartItems, increase} = useContext(CartContext);
 
     const isInCart = product => {
-        console.log('cartItems', cartItems);
-        console.log('Design/product', product);
-        return !!cartItems.find(item => item._id == product._id);
+        // console.log('cartItems', cartItems);
+        // console.log('Design/product', product);
+        return !!cartItems.find(item => item._id === product._id);
     }
 
     return ( 
         <div className="browse-design">
             <h2>{design.name}</h2>
             <p>Designed by {design.creator.username}</p>
-            <img src={design.imageUrl} />
+            <img src={design.imageUrl} alt={design.name}/>
             <ul>
                 <li>Length: {design.specs.length}</li>
                 <li>Width: {design.specs.width}</li>
