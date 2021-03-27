@@ -20,6 +20,7 @@ import Logout from './pages/user/Logout';
 import MyDesigns from './pages/designs/MyDesigns';
 import Edit from './pages/designs/Edit';
 import Cart from './pages/user/cart/Cart';
+import AddImages from './pages/designs/AddImages';
 
 
 function App() {
@@ -59,6 +60,9 @@ function App() {
                         </Route>
                         <Route path="/create">
                             <Create user={user}/>
+                        </Route>
+                        <Route exact path="/details/:id/images">
+                            <AddImages user={user}/>
                         </Route>
                         <Route path="/details/:id">
                             <Details user={user} />

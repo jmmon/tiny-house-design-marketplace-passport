@@ -19,7 +19,7 @@ const Create = ({user}) => {
         creator: {      //not really used here
             name: user.username,
             id: user.id,
-        }
+        },
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,7 +71,7 @@ const Create = ({user}) => {
         .then((jsonRes) => {
             console.log('new design posted', jsonRes);
             setIsSubmitting(false);
-            history.push('/details/'+jsonRes._id);
+            history.push('/details/'+jsonRes._id+'/images');
         })
         .catch(err => {
             console.log(err);

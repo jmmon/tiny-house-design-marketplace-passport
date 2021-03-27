@@ -37,7 +37,7 @@ router.route('/mydesigns/:uid').get((req, res) => {
 
 router.route("/create").post((req, res) => {
     console.log('create router working');
-    console.log('~req.body', req.body)
+    console.log('~req.body', req.body);
 
     const name = req.body.name;
     const imageUrl = req.body.imageUrl;
@@ -87,6 +87,14 @@ router.route("/create").post((req, res) => {
         res.sendStatus(500);
     });
 });
+
+router.route('/details/:id/upload').put((req, res) => {
+    console.log('add images router working');
+    console.log('req.params.id', req.params.id);
+    console.log('~req.files', req.files);
+    console.log('~req', req)
+
+})
 
 
 router.route("/edit/:id").put((req, res) => {
