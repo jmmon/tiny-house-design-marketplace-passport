@@ -27,12 +27,16 @@ function App() {
         username: null,
         id: null
     });
+    const [sidebarExpanded, setSidebarExpanded] = useState(true);
+    const toggleSidebar = () => {
+        setSidebarExpanded(!sidebarExpanded);
+    }
 
     return (
         <div className="App">
             <Router>
-                <Navbar user={user}/>
-                <Sidebar user={user} />
+                <Navbar user={user} sidebarExpanded={sidebarExpanded} toggleSidebar={toggleSidebar}/>
+                <Sidebar user={user} sidebarExpanded={sidebarExpanded} />
                 <div className="App-Content">
                     <Switch>
                         <Route path="/login">

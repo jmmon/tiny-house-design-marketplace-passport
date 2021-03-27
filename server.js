@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
+const fileuploader = require('express-fileupload');
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
@@ -13,6 +15,7 @@ var ensureAuthenticated = function(req, res, next) {
 
 app.use(cors());
 app.use(express.json());
+app.use(fileuploader());
 
 //connect to mongoose
 require('dotenv').config();

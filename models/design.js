@@ -76,6 +76,11 @@ const designSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'User'
     },
+
+    images: [{
+        Data: Buffer,
+        ContentType: String,
+    }],
 });
 
 const Design = mongoose.model("Design", designSchema);
